@@ -33,7 +33,7 @@ class MY_Controller extends MX_Controller{
 
 class Front_Controller extends MY_Controller{
 
-    private $template;
+    private $theme;
     private $site_name;
 
     public function __construct()
@@ -76,6 +76,7 @@ class Front_Controller extends MY_Controller{
             $data['categories'] = array(
                 array(
                     'name' => 'No Categories',
+                    'discussion_count' => 0,
                 ),
             );
         }
@@ -97,11 +98,12 @@ class Front_Controller extends MY_Controller{
             ),
             // Sidebar.
             'sidebar' => array(
+                'new_discussion_button' => anchor( site_url('discussions/new_discussion'), 'New Discussion', array( 'class' => 'btn btn-success btn-sm' )),
                 'categories' => element( 'categories', $data ),
             ),
             // Footer.
             'footer' => array(
-
+                'copy_text' => 'Powered By '.anchor( 'http://www.doveforums.com', 'Dove Forums').', &copy; 2011 - 2015.',
             ),
         );
 
@@ -111,7 +113,7 @@ class Front_Controller extends MY_Controller{
             'css' => array(
                 array( 'link' => '<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">' ),
                 array( 'link' => '<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">' ),
-                array( 'link' => '<link href="'.base_url('application/views/templates/'.$this->template.'/assets/css/custom.css').'", rel="stylesheet">' ),
+                array( 'link' => '<link href="'.base_url('application/views/templates/'.$this->theme.'/assets/css/custom.css').'", rel="stylesheet">' ),
                 array( 'link' => '<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">' ),
             ),
             'meta' => array(
