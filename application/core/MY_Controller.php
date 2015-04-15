@@ -6,8 +6,8 @@ class MY_Controller extends MX_Controller{
     // Set the autoload array.
     public $autoload = array(
         'helper'    => array( 'array', 'html', 'url' ),
-        'libraries' => array( 'database', 'session', 'parser' ),
-        'config'    => array( 'forums' ),
+        'libraries' => array( 'database', 'session', 'parser', 'messageci' ),
+        'config'    => array( 'forums', 'messageci' ),
     );
 
     /**
@@ -72,6 +72,12 @@ class Front_Controller extends MY_Controller{
             }
 
             array_unshift( $data['categories'], array('name' => anchor( site_url('categories'), 'All Categories'), 'discussion_count' => $this->discussions->count_all() ) );
+        } else {
+            $data['categories'] = array(
+                array(
+                    'name' => 'No Categories',
+                ),
+            );
         }
         // Build the template data array.
         $data = array(
@@ -124,11 +130,11 @@ class Front_Controller extends MY_Controller{
             // Content.
             'content' => $this->parser->parse( 'templates/'.$this->theme.'/'.$page_template.'', $page_data, TRUE ),
             // Footer.
-            'footer' => $this->parser->parser( 'templates/'.$this->theme.'/regions/footer', element( 'footer', $data ), TRUE ),
+            'footer' => $this->parser->parse( 'templates/'.$this->theme.'/regions/footer', element( 'footer', $data ), TRUE ),
         );
 
         // Send all the data to the layout file.
-        $this->parser->parse( 'templates/'.$this->theme.'/layout', element( 'theme', $data ) );
+        $this->parser->parse( 'templates/'.$this->theme.'/layout', element( 'templates', $data ) );
     }
 
 }
