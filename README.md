@@ -14,6 +14,11 @@ The project goal is a simple one.  To make Bulletin Board software that is easy 
 
 Thank you to all mentioned above for the great work on these libraries. 
 
+As stated above, I am using Ion Auth as the authentication for this site.  The default login details are as follows:-
+
+<strong>Email:</strong> admin@admin.com
+<strong>Password:</strong> password
+
 This project is also been built on top of the latest Codeigniter & Twitter Bootstrap builds.  
 
 If you would like to contribute to this project that would be great as I really would like to get this project back on track after so much time away from the community.
