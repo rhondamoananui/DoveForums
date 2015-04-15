@@ -6,7 +6,7 @@ class MY_Controller extends MX_Controller{
     // Set the autoload array.
     public $autoload = array(
         'helper'    => array( 'array', 'html', 'url' ),
-        'libraries' => array( 'database', 'session', 'parser', 'messageci' ),
+        'libraries' => array( 'database', 'session', 'parser', 'messageci', 'ion_auth' ),
         'config'    => array( 'forums', 'messageci' ),
     );
 
@@ -88,12 +88,12 @@ class Front_Controller extends MY_Controller{
                 ),
                 'logo' => anchor( site_url(), $this->site_name, array( 'class' => 'navbar-brand' ) ),
                 'username' => ucfirst( $this->session->userdata('username') ),
-                'logout_link' => anchor( site_url('users/logout'), 'Logout' ),
-                'profile_link' => anchor( site_url('users/profile'), 'Profile' ),
-                'settings_link' => anchor( site_url('users/settings'), 'Settings' ),
-                'dashboard_link' => anchor( site_url('dashboard'), 'Dashboard' ),
-                'login_link' => anchor( site_url('users/login'), 'Login' ),
-                'register_link' => anchor( site_url('users/register', 'Register') ),
+                'logout_link' => anchor( site_url( 'users/logout' ), 'Logout' ),
+                'profile_link' => anchor( site_url( 'users/profile' ), 'Profile' ),
+                'settings_link' => anchor( site_url( 'users/settings' ), 'Settings' ),
+                'dashboard_link' => anchor( site_url( 'dashboard' ), 'Dashboard' ),
+                'login_link' => anchor( site_url( 'users/login' ), 'Login' ),
+                'register_link' => anchor( site_url( 'users/register' ), 'Register' ),
             ),
             // Sidebar.
             'sidebar' => array(
