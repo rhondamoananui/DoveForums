@@ -46,11 +46,11 @@ class Discussions_m extends CI_Model {
     {
         // Select and Join.
         $this->db->select('discussions.name as discussion_name, discussions.comment_count,
-            discussions.date_last_comment, discussions.last_comment_user_id, discussions.category_id,
-            discussions.count_views, discussions.slug as discussion_slug, users.username, users.id as user_id,
-            category.name as category_name, category.slug as category_slug,')
+            discussions.last_comment_date, discussions.last_comment_user_id, discussions.insert_user_id,
+            discussions.category_id, discussions.view_count, discussions.slug as discussion_slug,
+            users.username, users.id as user_id, categories.name as category_name, categories.slug as category_slug,')
             ->join('users', 'users.id = discussions.last_comment_user_id')
-            ->join('category', 'category.category_id = discussions.category_id');
+            ->join('categories', 'categories.category_id = discussions.category_id');
 
         // Has a category id been passed?
         if( !empty( $category_id ) )

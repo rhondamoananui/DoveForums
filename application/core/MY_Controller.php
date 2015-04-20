@@ -6,7 +6,7 @@ class MY_Controller extends MX_Controller{
     // Set the autoload array.
     public $autoload = array(
         'helper'    => array( 'array', 'html', 'url' ),
-        'libraries' => array( 'database', 'session', 'parser', 'messageci', 'ion_auth' ),
+        'libraries' => array( 'database', 'session', 'parser', 'messageci', 'ion_auth', 'crumbs' ),
         'config'    => array( 'forums', 'messageci' ),
     );
 
@@ -65,7 +65,7 @@ class Front_Controller extends MY_Controller{
             {
                 $data['categories'] = array(
                     array(
-                        'name' => anchor( site_url('categories/'.$row->name.'/'.$row->slug.''), $row->name ),
+                        'name' => anchor( site_url('categories/'.$row->slug.''), $row->name ),
                         'discussion_count' => $row->discussion_count,
                     ),
                 );
